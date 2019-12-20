@@ -13,6 +13,7 @@ import static view.ConsoleOutput.printMessage;
 public class LottoVendingMachine {
 
     private LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
+    private int lottoCount;
 
     public LottoVendingMachine() {
     }
@@ -21,7 +22,7 @@ public class LottoVendingMachine {
         if (lottoMoney % 1000 != 0) {
             throw new IllegalArgumentException("로또 구매 금액은 1000원 단위여야 합니다!");
         }
-        int lottoCount = lottoMoney / 1000;
+        lottoCount = lottoMoney / 1000;
         printMessage(lottoCount + "개를 구매했습니다.");
         return generateLottos(lottoCount);
     }
@@ -37,6 +38,7 @@ public class LottoVendingMachine {
                 .collect(Collectors.toList());
     }
 
-    public void listLottos() {
+    public int getLottoCount() {
+        return lottoCount;
     }
 }

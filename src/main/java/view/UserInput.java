@@ -21,10 +21,18 @@ public class UserInput {
     }
 
     public static List<Integer> inputLottoNumbers() {
-        return Arrays.stream(SCANNER.nextLine().trim()
-                .replace(" ", "")
-                .split(","))
-                .map(x -> Integer.parseInt(x))
-                .collect(Collectors.toList());
+        SCANNER.nextLine();
+        try {
+            return Arrays.stream(SCANNER.nextLine().trim()
+                    .replace(" ", "")
+                    .split(","))
+                    .map(x -> Integer.parseInt(x))
+                    .sorted()
+                    .collect(Collectors.toList());
+        } catch (Exception ex) {
+            ConsoleOutput.printIntOnlyError();
+            inputLottoNumbers();
+        }
+        return null;
     }
 }

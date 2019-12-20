@@ -20,4 +20,12 @@ public class Lotto {
     public String lottoToStringTest() {
         return numbers.toString();
     }
+
+    public Integer at(int index) {
+        return numbers.get(index);
+    }
+
+    public boolean doesContain(int number) {
+        return numbers.contains(number);
+    }
 }

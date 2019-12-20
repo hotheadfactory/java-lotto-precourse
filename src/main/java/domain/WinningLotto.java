@@ -13,7 +13,29 @@ public class WinningLotto {
     }
 
     public Rank match(Lotto userLotto) {
-        // TODO 로직 구현
-        return null;
+        return Rank.valueOf(calculateMatchNumbers(lotto, userLotto), isContainingBonusNumber(userLotto));
+    }
+
+    private int calculateMatchNumbers(Lotto winningLotto, Lotto userLotto) {
+        int matchNumber = 0;
+        for(int i = 0; i < 6; i++) {
+            matchNumber += isContainingWinningNumber(winningLotto, userLotto, i);
+        }
+        System.out.println(matchNumber);
+        return matchNumber;
+    }
+
+    private int isContainingWinningNumber(Lotto winningLotto, Lotto userLotto, int i) {
+        if(userLotto.doesContain(winningLotto.at(i))) {
+            return 1;
+        }
+        return 0;
+    }
+
+    private boolean isContainingBonusNumber(Lotto userLotto) {
+        if(userLotto.doesContain(bonusNo)) {
+            return true;
+        }
+        return false;
     }
 }
